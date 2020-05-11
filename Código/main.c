@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 void access(int *, int *, int *, int *);
+void actions();
 int verifyAgency(int agency); // Verificar se agencia existe
 int validateCredentials(int account, int password); // Validar Credenciais
 
@@ -11,6 +12,11 @@ void main()
     while (logged != 1)
     {
         access(&agency, &account, &password, &logged);
+    }
+
+    if (logged == 1)
+    {
+        actions();
     }
 
     system("pause");
@@ -53,9 +59,26 @@ void access(int *agency, int *account, int *password, int *logged)
     }
     else
     {
-        printf("Agenci invalida\n");
+        printf("Agencia invalida\n");
     }
     
+}
+
+void actions()
+{
+    printf("  ------------------------------------------------------------\n");
+    printf("  |                    ... FATEC BANK ...                    |\n");
+    printf("  |                    ..................                    |\n");
+    printf("  |                                                          |\n");
+    printf("  |     <- DEPOSITO (1)                      (2) SAQUE ->    |\n");
+    printf("  |                                                          |\n");
+    printf("  |     <- TRANSFERENCIAS (3)              (4) EXTRATO ->    |\n");
+    printf("  |                                                          |\n");
+    printf("  |     <- POUPANCAO (5)                (6) PAGAMENTOS ->    |\n");
+    printf("  |                                                          |\n");
+    printf("  |     <- SAIR (7)                         (8) OUTROS ->    |\n");
+    printf("  |                                                          |\n");
+    printf("  ------------------------------------------------------------\n");
 }
 
 int verifyAgency(int agency)
