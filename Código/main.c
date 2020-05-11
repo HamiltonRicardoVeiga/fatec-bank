@@ -1,18 +1,22 @@
 #include <stdio.h>
 
-void access(int *, int *, int *);
-int verifyAgency(int agency);                       // Verificar se agencia existe
+void access(int *, int *, int *, int *);
+int verifyAgency(int agency); // Verificar se agencia existe
 int validateCredentials(int account, int password); // Validar Credenciais
 
 void main()
 {
-    int agency, account, password;
-    access(&agency, &account, &password);
-    printf("%i %i", agency, account);
+    int agency, account, password, logged = 0;
+
+    while (logged != 1)
+    {
+        access(&agency, &account, &password, &logged);
+    }
+
     system("pause");
 }
 
-void access(int *agency, int *account, int *password)
+void access(int *agency, int *account, int *password, int *logged)
 {
     printf("  ------------------------------------------------------------\n");
     printf("  |                    ... FATEC BANK ...                    |\n");
@@ -37,16 +41,21 @@ void access(int *agency, int *account, int *password)
         printf("  |                                                          |\n");
         printf("  ------------------------------------------------------------\n");
         scanf("%i", password);
-
         if (validateCredentials(*account, *password) == 1)
         {
-            printf("Parabens voce esta logado!!!");
+            *logged = 1;
+            printf("Parabens voce esta logado!!!\n"); // Temporario
         }
         else
         {
-            printf("Erro no login tente novamente");
+            printf("Conta e/ou senha nao coincidem, tente novamente\n");
         }
     }
+    else
+    {
+        printf("Agenci invalida\n");
+    }
+    
 }
 
 int verifyAgency(int agency)
@@ -66,5 +75,16 @@ int verifyAgency(int agency)
 
 int validateCredentials(int account, int password)
 {
-    return 1;
+    int accounts[2][2] = {{3001, 123456}, {3000, 1234567}}; // [Conta, Senha]
+
+    for(int i = 0; i < 2; i++)
+    {
+        if (account == accounts[i][0] && password == accounts[i][1])
+        {
+            return 1;
+        }
+
+    }
+
+    return 0;
 }
