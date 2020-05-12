@@ -16,4 +16,20 @@ void actions()
     printf("  |                                                          |\n");
     printf("  ------------------------------------------------------------\n");
     scanf("%d"< transferType);
+    printf("  ------------------------------------------------------------\n");
+    printf("  |                    ... FATEC BANK ...                    |\n");
+    printf("  |                    ..................                    |\n");
+    printf("  |                      CONTA CORRENTE                      |\n");
+    printf("  |                                                          |\n");
+    printf("  |                                                          |\n"); /*  ESSE CARA CHAMAR OR DADOS BANCARIOS*/
+    printf("  |                                                          |\n");
+    printf("  ------------------------------------------------------------\n");
+    printf("  ------------------------------------------------------------\n");
+    printf("  |                    ... FATEC BANK ...                    |\n");
+    printf("  |                    ..................                    |\n");
+    printf("  |                      CONTA CORRENTE                      |\n");
+    printf("  |                                                          |\n");
+    printf("  |                                                          |\n"); /*  ESSE CARA CHAMAR OR DADOS BANCARIOS*/
+    printf("  |                                                          |\n");
+    printf("  ------------------------------------------------------------\n");
 }
