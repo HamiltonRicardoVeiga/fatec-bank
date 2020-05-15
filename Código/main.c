@@ -34,7 +34,7 @@ void main()
         actions(&balance);
     }
 
-    system("pause");
+/*    system("pause");*/
 }
 
 void access(int *agency, int *account, int *password, int *logged, float *balance)
@@ -81,7 +81,7 @@ void access(int *agency, int *account, int *password, int *logged, float *balanc
 
 void actions(float *balance)
 {
-    int operation;
+    int operation, transferType, deposito, cc_agency, cc_account;
     float newAction, value;
 
     while (operation != 7)
@@ -130,12 +130,98 @@ void actions(float *balance)
                 }
                 break;
             case 2:
+                /*    printf("  ------------------------------------------------------------\n");
+                    printf("  |                    ... FATEC BANK ...                    |\n");
+                    printf("  |                    ..................                    |\n");
+                    printf("  |                         SAQUES                           |\n");
+                    printf("  |                                                          |\n");
+                    printf("  |               DIGITE O VALOR A SER SACADO                |\n");
+                    printf("  |                                                          |\n");
+                    printf("  ------------------------------------------------------------\n");
+                    scanf("%d",&sacAmount);*/
                 break;
             case 3:
+                    printf("  ------------------------------------------------------------\n");
+                    printf("  |                    ... FATEC BANK ...                    |\n");
+                    printf("  |                    ..................                    |\n");
+                    printf("  |                      TRANSFERENCIAS                      |\n");
+                    printf("  |                                                          |\n");
+                    printf("  |     <- CONTA CORRERNTE (1)      (2) CONTA POLPANCA ->    |\n");
+                    printf("  |                                                          |\n");
+                    printf("  |     <- VOLTAR (3)                                        |\n");
+                    printf("  |                                                          |\n"); /* CONSEGUE FAZER AS VALIDAÇÕES?*/
+                    printf("  |                      DIGITE A OPCAO                      |\n");
+                    printf("  |                                                          |\n");
+                    printf("  |                                                          |\n");
+                    printf("  |                                                          |\n");
+                    printf("  ------------------------------------------------------------\n");
+                    scanf("%d", &transferType);
+                    switch (transferType)
+                    {
+                    case 1/* constant-expression */:
+                        /* code */
+                            printf("  ------------------------------------------------------------\n");
+                            printf("  |                    ... FATEC BANK ...                    |\n");
+                            printf("  |                    ..................                    |\n");
+                            printf("  |                      CONTA CORRENTE                      |\n");
+                            printf("  |                                                          |\n");
+                            printf("  |                                                          |\n"); /* CONSEGUE FAZER AS VALIDAÇÕES?*/
+                            printf("  |                                                          |\n");
+                            printf("  |                 DIGITE O NUMERO DA CONTA                 |\n");
+                            printf("  |                                                          |\n");
+                            printf("  ------------------------------------------------------------\n");
+                            scanf("%d", &cc_agency);
+                        break;
+                    case 2:
+                            printf("  ------------------------------------------------------------\n");
+                            printf("  |                    ... FATEC BANK ...                    |\n");
+                            printf("  |                    ..................                    |\n");
+                            printf("  |                      CONTA POLPANCA                      |\n");
+                            printf("  |                                                          |\n");
+                            printf("  |                                                          |\n"); 
+                            printf("  |                                                          |\n"); /* CONSEGUE FAZER AS VALIDAÇÕES?*/
+                            printf("  |                 DIGITE O NUMERO DA CONTA                 |\n");
+                            printf("  |                                                          |\n");
+                            printf("  ------------------------------------------------------------\n");
+                            scanf("%d", &cc_account);
+                        break;
+                    default:
+                        break;
+                    }
                 break;
             case 4:
                 break;
             case 5:
+                printf("  ------------------------------------------------------------\n");
+                printf("  |                    ... FATEC BANK ...                    |\n");
+                printf("  |                    ..................                    |\n");
+                printf("  |                         POLPANCA                         |\n");
+                printf("  |                                                          |\n");
+                printf("  |      Saldo:                                              |\n");
+                printf("  |                                                          |\n");
+                printf("  |                 DESEJA DEPOSITAR ALGUM VALOR             |\n");
+                printf("  |                                                          |\n");
+                printf("  |        (1) <- SIM                      NAO -> (2)        |\n");
+                printf("  ------------------------------------------------------------\n");
+                scanf("%d", &deposito);
+                switch (deposito)
+                {
+                case 1:
+                       /* float polAmount;
+                        printf("  ------------------------------------------------------------\n");
+                        printf("  |                    ... FATEC BANK ...                    |\n");
+                        printf("  |                    ..................                    |\n");
+                        printf("  |                          VALOR                           |\n");
+                        printf("  |                                                          |\n");
+                        printf("  ------------------------------------------------------------\n");
+                        scanf("%.2f", &polAmount);*/
+                    break;
+                case 2:
+                    /*Consegue fazer o redirect ?*/
+                    break;
+                default:
+                    break;
+                }
                 break;
             case 6:
                 break;

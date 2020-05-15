@@ -1,24 +1,23 @@
 void actions()
 {
-    float initialAmount, deposito;
+    int barcodeNumber = 471002562658;
     printf("  ------------------------------------------------------------\n");
     printf("  |                    ... FATEC BANK ...                    |\n");
     printf("  |                    ..................                    |\n");
-    printf("  |                         POLPANCA                         |\n");
+    printf("  |                        PAGAMENTOS                        |\n");
     printf("  |                                                          |\n");
-    printf("  |                         SALDO                            |\n");
-    printf("  |                      %f.2", initialAmount);
-    printf("                               |\n");
+    printf("  |                 SCANEAR CODIGO DE BARRAS                 |\n");
     printf("  |                                                          |\n");
-    printf("  |                 DESEJA DEPOSITAR ALGUM VALOR             |\n");
-    printf("  |                                                          |\n");
-    printf("  |        (1) <- SIM                      NAO -> (2)        |\n");
-    printf("  ------------------------------------------------------------\n");
-    scanf("%f.2", deposito);
+    printf("  ------------------------------------------------------------\n"); /*Colocamos um simulador de leitor de codigo?*/
+
     printf("  ------------------------------------------------------------\n");
     printf("  |                    ... FATEC BANK ...                    |\n");
     printf("  |                    ..................                    |\n");
-    printf("  |                          VALOR                           |\n");
+    printf("  |                         SAQUES                           |\n");
+    printf("  |                                                          |\n");
+    printf("  |               DIGITE O VALOR A SER SACADO                |\n");
     printf("  |                                                          |\n");
     printf("  ------------------------------------------------------------\n");
 }
+
+
