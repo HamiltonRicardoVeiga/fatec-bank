@@ -18,6 +18,19 @@ void actions()
     printf("  |               DIGITE O VALOR A SER SACADO                |\n");
     printf("  |                                                          |\n");
     printf("  ------------------------------------------------------------\n");
+
+
+printf("  ------------------------------------------------------------\n");
+printf("  |                    ... FATEC BANK ...                    |\n");
+printf("  |                    ..................                    |\n");
+printf("  |                        PAGAMENTOS                        |\n");
+printf("  |                                                          |\n");
+printf("  |                  PAGAMENTO NAO EFETUADO                  |\n");
+printf("  |                                                          |\n");
+printf("  ------------------------------------------------------------\n");
+
+
 }
+
 
 

@@ -81,7 +81,7 @@ void access(int *agency, int *account, int *password, int *logged, float *balanc
 
 void actions(float *balance)
 {
-    int operation, transferType, deposito, cc_agency, cc_account;
+    int operation, transferType, deposito, cc_agency, cc_account, sacAmount, polAmount, barCode, billetValue, barCodeOp;
     float newAction, value;
 
     while (operation != 7)
@@ -130,7 +130,7 @@ void actions(float *balance)
                 }
                 break;
             case 2:
-                /*    printf("  ------------------------------------------------------------\n");
+                    printf("  ------------------------------------------------------------\n");
                     printf("  |                    ... FATEC BANK ...                    |\n");
                     printf("  |                    ..................                    |\n");
                     printf("  |                         SAQUES                           |\n");
@@ -138,7 +138,55 @@ void actions(float *balance)
                     printf("  |               DIGITE O VALOR A SER SACADO                |\n");
                     printf("  |                                                          |\n");
                     printf("  ------------------------------------------------------------\n");
-                    scanf("%d",&sacAmount);*/
+                    scanf("%d",&sacAmount);
+                    if (sacAmount >= 1000)
+                    {
+                        int scop;
+                        printf("  ------------------------------------------------------------\n");
+                        printf("  |                    ... FATEC BANK ...                    |\n");
+                        printf("  |                    ..................                    |\n");
+                        printf("  |                         SAQUES                           |\n");
+                        printf("  |                                                          |\n");
+                        printf("  |             O VALOR A SER SACADO E MAIOR QUE             |\n");
+                        printf("  |            QUE O PERMITIDO NO CAIXA ELETRONICO           |\n");
+                        printf("  |          FAVOR DIRIJA-SE AO GERENTE PARA EFETUAR         |\n");
+                        printf("  |                         O SAQUE                          |\n");
+                        printf("  |                                                          |\n");
+                        printf("  ------------------------------------------------------------\n");
+                        printf("  |                                                          |\n");
+                        printf("  |                                                          |\n");
+                        printf("  |                                                          |\n");
+                        printf("  ------------------------------------------------------------\n");
+                        printf("  |                    ... FATEC BANK ...                    |\n");
+                        printf("  |                    ..................                    |\n");
+                        printf("  |                         SAQUES                           |\n");
+                        printf("  |         DESEJA REALIZAR O SAQUE MENOR QUE                |\n");
+                        printf("  |                        R$ 1000.00                        |\n");
+                        printf("  |                                                          |\n");
+                        printf("  |        <- SIM (1)                      (2) NAO->         |\n");
+                        printf("  |                                                          |\n");
+                        printf("  ------------------------------------------------------------\n");
+                        scanf("%d", &scop);
+                        /*if (scop = 1)
+                        {
+                            return operation = 2; /*
+                        } else
+                        {
+                            break;
+                        }*/
+                    }
+                    else                    
+                    {
+                        printf("  ------------------------------------------------------------\n");
+                        printf("  |                    ... FATEC BANK ...                    |\n");
+                        printf("  |                    ..................                    |\n");
+                        printf("  |                         SAQUES                           |\n");
+                        printf("  |                                                          |\n");
+                        printf("  |                RETIRE O VALOR SOLICITADO                 |\n");
+                        printf("  |                                                          |\n");
+                        printf("  ------------------------------------------------------------\n");                   
+                     }
+                    
                 break;
             case 3:
                     printf("  ------------------------------------------------------------\n");
@@ -206,24 +254,68 @@ void actions(float *balance)
                 scanf("%d", &deposito);
                 switch (deposito)
                 {
-                case 1:
-                       /* float polAmount;
+                case 1: 
                         printf("  ------------------------------------------------------------\n");
                         printf("  |                    ... FATEC BANK ...                    |\n");
                         printf("  |                    ..................                    |\n");
                         printf("  |                          VALOR                           |\n");
                         printf("  |                                                          |\n");
                         printf("  ------------------------------------------------------------\n");
-                        scanf("%.2f", &polAmount);*/
+                        scanf("%d", &polAmount);
                     break;
                 case 2:
-                    /*Consegue fazer o redirect ?*/
                     break;
                 default:
                     break;
                 }
                 break;
             case 6:
+                    printf("  ------------------------------------------------------------\n");
+                    printf("  |                    ... FATEC BANK ...                    |\n");
+                    printf("  |                    ..................                    |\n");
+                    printf("  |                        PAGAMENTOS                        |\n");
+                    printf("  |                                                          |\n");
+                    printf("  |                  DIGITE CODIGO DE BARRAS                 |\n");
+                    printf("  |                                                          |\n");
+                    printf("  ------------------------------------------------------------\n"); /*Colocamos um simulador de leitor de codigo?*/
+                    scanf("%d", &barCode);
+                    printf("  ------------------------------------------------------------\n");
+                    printf("  |                    ... FATEC BANK ...                    |\n");
+                    printf("  |                    ..................                    |\n");
+                    printf("  |                        PAGAMENTOS                        |\n");
+                    printf("  |                                                          |\n");
+                    printf("  |     VALOR : %d                                           |\n", billetValue);
+                    printf("  |                                                          |\n");
+                    printf("  |                 DESEJA EFETUAR O PAGAMENTO?              |\n");
+                    printf("  |                                                          |\n");
+                    printf("  |      <- SIM (1)                          (2) NÃO ->      |\n");
+                    printf("  |                                                          |\n");
+                    printf("  ------------------------------------------------------------\n"); /*Colocamos um simulador de leitor de codigo?*/
+                    scanf("%d", &barCodeOp);
+                    if (barCodeOp == 1)
+                    {
+                        printf("  ------------------------------------------------------------\n");
+                        printf("  |                    ... FATEC BANK ...                    |\n");
+                        printf("  |                    ..................                    |\n");
+                        printf("  |                        PAGAMENTOS                        |\n");
+                        printf("  |                                                          |\n");
+                        printf("  |              PAGAMENTO EFETUADO COM SUCESSO!             |\n");
+                        printf("  |                                                          |\n");
+                        printf("  ------------------------------------------------------------\n");
+                        break;
+                    }else
+                    {
+                        printf("  ------------------------------------------------------------\n");
+                        printf("  |                    ... FATEC BANK ...                    |\n");
+                        printf("  |                    ..................                    |\n");
+                        printf("  |                        PAGAMENTOS                        |\n");
+                        printf("  |                                                          |\n");
+                        printf("  |                  PAGAMENTO NAO EFETUADO                  |\n");
+                        printf("  |                                                          |\n");
+                        printf("  ------------------------------------------------------------\n");
+                    }
+                    
+                    
                 break;
             case 7:
                 break;
