@@ -5,6 +5,8 @@ void access(int *, int *, int *, int *, float *, float *);
 void actions(float *balance, float *balanceSavings);
 
 // Validacoes
+int verifyAccount(int);
+int verifyAccountSavings(int);
 int verifyAgency(int);             // Verificar se agencia existe
 int validateCredentials(int, int); // Validar Credenciais
 int consultBarCode(int);
@@ -14,7 +16,6 @@ int deposit(float *, float);
 int transfers();
 int withdraw(float, float);
 int extract();
-int payments();
 void leave();
 
 void main()
@@ -79,7 +80,7 @@ void access(int *agency, int *account, int *password, int *logged, float *balanc
 
 void actions(float *balance, float *balanceSavings)
 {
-    int operation, subOperation, barCode, valueBarCode, transferType, deposito, cc_agency, cc_account, sacAmount, polAmount;
+    int operation, subOperation, barCode, valueBarCode, cc_account;
     float newAction, value;
     while (operation != 7)
     {
@@ -221,54 +222,125 @@ void actions(float *balance, float *balanceSavings)
             }
             break;
         case 3:
-        /*
             printf("  ------------------------------------------------------------\n");
             printf("  |                    ... FATEC BANK ...                    |\n");
             printf("  |                    ..................                    |\n");
+            printf("  |                                                          |\n");
             printf("  |                      TRANSFERENCIAS                      |\n");
             printf("  |                                                          |\n");
             printf("  |     <- CONTA CORRENTE (1)       (2) CONTA POUPANCA ->    |\n");
             printf("  |                                                          |\n");
             printf("  |     <- VOLTAR (3)                                        |\n");
-            printf("  |                                                          |\n"); 
-            printf("  |                       DIGITE A OPCAO                     |\n");
-            printf("  |                                                          |\n");
-            printf("  |                                                          |\n");
             printf("  |                                                          |\n");
             printf("  ------------------------------------------------------------\n");
-            scanf("%d", &transferType);
-            switch (transferType)
+            scanf("%i", &subOperation);
+            switch (subOperation)
             {
             case 1:
                 printf("  ------------------------------------------------------------\n");
                 printf("  |                    ... FATEC BANK ...                    |\n");
                 printf("  |                    ..................                    |\n");
-                printf("  |                      CONTA CORRENTE                      |\n");
                 printf("  |                                                          |\n");
-                printf("  |                                                          |\n"); 
+                printf("  |                      CONTA CORRENTE                      |\n");
                 printf("  |                                                          |\n");
                 printf("  |                 DIGITE O NUMERO DA CONTA                 |\n");
                 printf("  |                                                          |\n");
                 printf("  ------------------------------------------------------------\n");
-                scanf("%d", &cc_agency);
+                scanf("%i", &cc_account);
+
+                if (verifyAccount(cc_account) == 1)
+                {
+                    printf("  ------------------------------------------------------------\n");
+                    printf("  |                    ... FATEC BANK ...                    |\n");
+                    printf("  |                    ..................                    |\n");
+                    printf("  |                                                          |\n");
+                    printf("  |              DIGITE O VALOR A SER TRANSFERIDO            |\n");
+                    printf("  |                                                          |\n");
+                    printf("  ------------------------------------------------------------\n");
+                    scanf("%f", &value);
+
+                    if (value <= *balance)
+                    {
+                        *balance -= value;
+                    }
+                    else
+                    {
+                        printf("  ------------------------------------------------------------\n");
+                        printf("  |                    ... FATEC BANK ...                    |\n");
+                        printf("  |                    ..................                    |\n");
+                        printf("  |                                                          |\n");
+                        printf("  |                       CONTA CORRENTE                     |\n");
+                        printf("  |                                                          |\n");
+                        printf("  |              VOCE NAO POSSUI SALDO SUFICIENTE            |\n");
+                        printf("  |                                                          |\n");
+                        printf("  ------------------------------------------------------------\n");
+                    }
+                }
+                else
+                {
+                    printf("  ------------------------------------------------------------\n");
+                    printf("  |                    ... FATEC BANK ...                    |\n");
+                    printf("  |                    ..................                    |\n");
+                    printf("  |                                                          |\n");
+                    printf("  |                       CONTA INVALIDA                     |\n");
+                    printf("  |                                                          |\n");
+                    printf("  ------------------------------------------------------------\n");
+                }
                 break;
             case 2:
                 printf("  ------------------------------------------------------------\n");
                 printf("  |                    ... FATEC BANK ...                    |\n");
                 printf("  |                    ..................                    |\n");
+                printf("  |                                                          |\n");
                 printf("  |                      CONTA POUPANCA                      |\n");
                 printf("  |                                                          |\n");
-                printf("  |                                                          |\n");
-                printf("  |                                                          |\n"); 
                 printf("  |                 DIGITE O NUMERO DA CONTA                 |\n");
                 printf("  |                                                          |\n");
                 printf("  ------------------------------------------------------------\n");
                 scanf("%d", &cc_account);
+
+                if (verifyAccountSavings(cc_account) == 1)
+                {
+                    printf("  ------------------------------------------------------------\n");
+                    printf("  |                    ... FATEC BANK ...                    |\n");
+                    printf("  |                    ..................                    |\n");
+                    printf("  |                                                          |\n");
+                    printf("  |              DIGITE O VALOR A SER TRANSFERIDO            |\n");
+                    printf("  |                                                          |\n");
+                    printf("  ------------------------------------------------------------\n");
+                    scanf("%f", &value);
+
+                    if (value <= *balance)
+                    {
+                        *balance -= value;
+                    }
+                    else
+                    {
+                        printf("  ------------------------------------------------------------\n");
+                        printf("  |                    ... FATEC BANK ...                    |\n");
+                        printf("  |                    ..................                    |\n");
+                        printf("  |                                                          |\n");
+                        printf("  |                      CONTA POUPANCA                      |\n");
+                        printf("  |                                                          |\n");
+                        printf("  |              VOCE NAO POSSUI SALDO SUFICIENTE            |\n");
+                        printf("  |                                                          |\n");
+                        printf("  ------------------------------------------------------------\n");
+                    }
+                }
+                else
+                {
+                    printf("  ------------------------------------------------------------\n");
+                    printf("  |                    ... FATEC BANK ...                    |\n");
+                    printf("  |                    ..................                    |\n");
+                    printf("  |                                                          |\n");
+                    printf("  |                       CONTA INVALIDA                     |\n");
+                    printf("  |                                                          |\n");
+                    printf("  ------------------------------------------------------------\n");
+                }
                 break;
             default:
                 break;
             }
-            */
             break;
         case 4:
             break;
@@ -358,14 +430,16 @@ void actions(float *balance, float *balanceSavings)
             printf("  ------------------------------------------------------------\n");
             printf("  |                    ... FATEC BANK ...                    |\n");
             printf("  |                    ..................                    |\n");
+            printf("  |                                                          |\n");
             printf("  |                        PAGAMENTOS                        |\n");
             printf("  |                                                          |\n");
             printf("  |                  DIGITE CODIGO DE BARRAS                 |\n");
             printf("  |                                                          |\n");
             printf("  ------------------------------------------------------------\n");
             scanf("%i", &barCode);
+
             valueBarCode = consultBarCode(barCode);
-            printf("%i", valueBarCode);
+
             if (valueBarCode != 0)
             {
                 printf("  ------------------------------------------------------------\n");
@@ -458,6 +532,36 @@ int verifyAgency(int agency)
     for (int i = 0; i < 6; i++)
     {
         if (agencies[i] == agency)
+        {
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+int verifyAccount(int account)
+{
+    int accounts[2] = {3001, 3000};
+
+    for (int i = 0; i < 2; i++)
+    {
+        if (account == accounts[i])
+        {
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+int verifyAccountSavings(int account)
+{
+    int accounts[2] = {4005, 5006};
+
+    for (int i = 0; i < 2; i++)
+    {
+        if (account == accounts[i])
         {
             return 1;
         }
