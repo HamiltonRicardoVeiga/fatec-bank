@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <conio.h>
 
 // Funcoes principais
 void access(int *, int *, int *, int *, float *, float *);
@@ -80,8 +81,9 @@ void access(int *agency, int *account, int *password, int *logged, float *balanc
 
 void actions(float *balance, float *balanceSavings)
 {
-    int operation, subOperation, barCode, valueBarCode, cc_account;
-    float newAction, value;
+    char extractOptions[30][3];
+    int operation, subOperation, barCode, valueBarCode, cc_account, sizeOf = 0;
+    float newAction, value, extractValue[30];
     while (operation != 7)
     {
         newAction = 0;
@@ -126,6 +128,11 @@ void actions(float *balance, float *balanceSavings)
 
             if (deposit(&newAction, value) == 1)
             {
+                extractOptions[sizeOf][0] = 'D';
+                extractOptions[sizeOf][1] = 'E';
+                extractOptions[sizeOf][2] = 'P';
+                extractValue[sizeOf] = value;
+                sizeOf++;
                 *balance += newAction;
             }
             break;
@@ -194,6 +201,11 @@ void actions(float *balance, float *balanceSavings)
                     printf("  ------------------------------------------------------------\n");
 
                     *balance -= value;
+                    extractOptions[sizeOf][0] = 'S';
+                    extractOptions[sizeOf][1] = 'A';
+                    extractOptions[sizeOf][2] = 'C';
+                    extractValue[sizeOf] = value;
+                    sizeOf++;
                 }
                 else
                 {
@@ -262,6 +274,11 @@ void actions(float *balance, float *balanceSavings)
                     if (value <= *balance)
                     {
                         *balance -= value;
+                        extractOptions[sizeOf][0] = 'T';
+                        extractOptions[sizeOf][1] = 'C';
+                        extractOptions[sizeOf][2] = 'C';
+                        extractValue[sizeOf] = value;
+                        sizeOf++;
                     }
                     else
                     {
@@ -313,6 +330,11 @@ void actions(float *balance, float *balanceSavings)
                     if (value <= *balance)
                     {
                         *balance -= value;
+                        extractOptions[sizeOf][0] = 'T';
+                        extractOptions[sizeOf][1] = 'C';
+                        extractOptions[sizeOf][2] = 'P';
+                        extractValue[sizeOf] = value;
+                        sizeOf++;
                     }
                     else
                     {
@@ -343,6 +365,14 @@ void actions(float *balance, float *balanceSavings)
             }
             break;
         case 4:
+            printf("  ------------------------------------------------------------\n");
+            printf("\n");
+            for (int i = 0; i < sizeOf; i++)
+            {
+                printf("  %c%c%c  %.2f \n", extractOptions[i][0], extractOptions[i][1], extractOptions[i][2], extractValue[i]);
+                printf("\n");
+            }
+            printf("  ------------------------------------------------------------\n");
             break;
         case 5:
             printf("  ------------------------------------------------------------\n");
@@ -379,8 +409,14 @@ void actions(float *balance, float *balanceSavings)
                 {
                     *balanceSavings += value;
                     *balance -= value;
+
+                    extractOptions[sizeOf][0] = 'C';
+                    extractOptions[sizeOf][1] = 'P';
+                    extractOptions[sizeOf][2] = 'A';
+                    extractValue[sizeOf] = value;
+                    sizeOf++;
                 }
-                else 
+                else
                 {
                     printf("  ------------------------------------------------------------\n");
                     printf("  |                    ... FATEC BANK ...                    |\n");
@@ -410,6 +446,12 @@ void actions(float *balance, float *balanceSavings)
                 {
                     *balanceSavings -= value;
                     *balance += value;
+
+                    extractOptions[sizeOf][0] = 'C';
+                    extractOptions[sizeOf][1] = 'P';
+                    extractOptions[sizeOf][2] = 'R';
+                    extractValue[sizeOf] = value;
+                    sizeOf++;
                 }
                 else
                 {
@@ -423,7 +465,6 @@ void actions(float *balance, float *balanceSavings)
                     printf("  |                                                          |\n");
                     printf("  ------------------------------------------------------------\n");
                 }
-                
             }
             break;
         case 6:
@@ -446,7 +487,7 @@ void actions(float *balance, float *balanceSavings)
                 printf("  |                    ... FATEC BANK ...                    |\n");
                 printf("  |                    ..................                    |\n");
                 printf("  |                                                          |\n");
-                printf("  |                        PAGAMENTOS                        |\n");              
+                printf("  |                        PAGAMENTOS                        |\n");
                 printf("  |                                                          |\n");
                 printf("  |                 DESEJA EFETUAR O PAGAMENTO?              |\n");
                 printf("  |                                                          |\n");
@@ -464,6 +505,12 @@ void actions(float *balance, float *balanceSavings)
                     if (valueBarCode <= *balance)
                     {
                         *balance -= valueBarCode;
+
+                        extractOptions[sizeOf][0] = 'P';
+                        extractOptions[sizeOf][1] = 'A';
+                        extractOptions[sizeOf][2] = 'G';
+                        extractValue[sizeOf] = valueBarCode;
+                        sizeOf++;
 
                         printf("  ------------------------------------------------------------\n");
                         printf("  |                    ... FATEC BANK ...                    |\n");
@@ -487,7 +534,6 @@ void actions(float *balance, float *balanceSavings)
                         printf("  |                                                          |\n");
                         printf("  ------------------------------------------------------------\n");
                     }
-                    
                 }
                 else
                 {
@@ -616,7 +662,7 @@ int withdraw(float balance, float value)
     return 0;
 }
 
-void leave() 
+void leave()
 {
     printf("Obrigado pela preferencia.\n");
 }
